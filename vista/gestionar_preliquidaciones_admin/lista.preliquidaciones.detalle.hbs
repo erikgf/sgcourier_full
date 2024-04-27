@@ -1,0 +1,83 @@
+  <input  id="txtidpreliquidacion"  name="txtidpreliquidacion" type="hidden" value="{{id}}">
+  <div class="row">
+    <div class="col-md-2 col-sm-12">
+        <label for="txtagencia">Agencia</label>
+        <input type="text" class="form-control" name="txtagencia"readonly value="{{agencia}}"/>
+    </div>
+    <div class="col-md-6 col-sm-12">
+        <label for="txtresponsable">Repsonsable</label>
+        <input type="text" class="form-control" name="txtresponsable" readonly  value="{{responsable}}"/>
+    </div>
+    <div class="offset-2 col-md-2 col-sm-12">
+        <label for="txtestado">Estado</label>
+        <input type="text" class="form-control" readonly name="txtestado" value="{{estado}}"/>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-6 form-group m-t-10">
+        <label for="txtrepartidor">Repartidor </label>
+        <input class="form-control"  id="txtrepartidor" readonly name="txtrepartidor" type="text"  value="{{repartidor}}">
+      </div>
+      <div class="col-sm-2 form-group m-t-10">
+          <label for="txttipovehiculo">Tipo Vehiculo</label>
+          <input class="form-control"  id="txttipovehiculo" readonly name="txttipovehiculo" type="text"  value="{{tipo_vehiculo}}">
+      </div>
+      <div class="offset-2 col-sm-2 form-group m-t-10">
+          <label for="txtfecharegistro">Fecha Registro</label>
+          <input type="date" class="form-control" readonly required id="txtfecharegistro" value="{{fecha_registro_raw}}"/>
+      </div>
+  </div> 
+
+  <div class="row">
+    <div class="col-sm-12">
+      <label>Detalle de Preliquidación</label>
+      <hr>
+      <table id="tbldetalle" class="table table-sm small table-condensed display nowrap table-responsive-md table-mini">
+          <thead class="thead-light">
+            <tr>
+              <th class="text-center"scope="col">Item</th>
+              <th class="td-estado">Estado</th>
+              <th scope="col">Cliente</th>
+              <th scope="col">Cliente Interno</th>
+              <th class="td-numeroguia" scope="col" >Doc./N. Guía</th>
+              <th class="td-cantidad" scope="col" style="">Cant.</th>
+              <th class="td-peso" scope="col" style="">Peso(KG)</th>
+              <th class="td-volumen" scope="col" style="">Vol.(KG)</th>
+              <th class="td-tipopaquete" scope="col" style="" title="Tipo de Paquete">Tipo</th>
+              <th class="td-direccion" scope="col" style="">Dirección</th>
+              <th class="td-ciudad" scope="col" style="">Zona/Ciudad</th>
+              <th class="td-costounitario"  scope="col" style="">Costo Unit(S/)</th>
+              <th class="td-costosubtotal" scope="col" style="">Subtotal(S/)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#registros_detalle}}
+                <tr>
+                  <td class="td-opc text-center">
+                    {{indexer @index}}
+                  </td>
+                  <td class="td-estado"><input style="width:100%" readonly name="txtestadopreliquidacion{{@index}}" value="{{estado_descripcion}}"/></td>
+                  <td><input style="width:100%" readonly name="txtclientepreliquidacion_{{@index}}" value="{{cliente}}"/></td>
+                  <td><input class="val_clienteinterno" style="width:100%" readonly name="txtclienteinternopreliquidacion_{{@index}}" value="{{cliente_interno}}"/></td>
+                  <td class="td-numeroguia"><input readonly name="txtnumeroguiapreliquidacion_{{@index}}" style="width:100%" value="{{documento_guia}}"/></td>
+                  <td class="td-cantidad"><input readonly name="txtcantidadpreliquidacion_{{@index}}" style="width:100%" type="number" value="{{cantidad}}"/></td>
+                  <td class="td-peso"><input readonly name="txtpesopreliquidacion_{{@index}}" style="width:100%" type="number" value="{{peso}}"/></td>
+                  <td class="td-volumen"><input readonly name="txtvolumenpreliquidacion_{{@index}}" style="width:100%" type="number" value="{{volumen}}"/></td>
+                  <td class="td-tipopaquete"><input readonly  style="width:100%" type="text" value="{{tipo_paquete}}"/></td>
+                  <td class="td-direccion"><input  readonly name="txtdireccionpreliquidacion_{{@index}}" style="width:100%"  value="{{direccion_entrega}}"/></td>
+                  <td class="td-ciudad"><input  style="width:100%"  name="txtciudadpreliquidacion_{{@index}}" readonly value="{{lugar_entrega}}"/></td>
+                  <td class="td-costounitario"><input  readonly name="txtcostounitariopreliquidacion_{{@index}}"  style="width:100%" type="number" value="{{costo_unitario}}"/></td>
+                  <td class="td-costosubtotal"><input  readonly  class="text-right" name="txtsubtotalpreliqudiacion_{{@index}}" style="width:100%" type="number" readonly value="{{subtotal}}"/></td>
+                </tr>
+            {{/registros_detalle}}
+          </tbody>
+          <tfoot>
+            <tr class="font-24 text-right">
+              <th colspan="12">Total</th>
+              <th>S/ {{costo_entrega}}</th>
+            </tr>
+          </tfoot>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,61 @@
+<div class="page no-navbar no-toolbar no-swipeback">
+  <style type="text/css">
+    .login-img{
+      text-align: center;
+      margin-top:10em;
+    }
+
+    .list.inset{
+      padding: 0 1.25em;
+    }
+
+    .login-screen-content .list .item-content .item-input-wrap input{
+        background: white;
+        padding-left: .6em;
+        border-radius: .7em;
+    }
+  </style>
+  
+  <!-- Scrollable page content -->
+  <div class="page-content login-screen-content">
+      <div class="login-img">
+          <img src="assets/img/logo_main.jpg">
+      </div>
+      <form>
+            <div class="list inset">
+              <ul>
+                <li class="item-content item-input">
+                  <div class="item-media"><i class="icon f7-icons">person</i></div>
+                  <div class="item-inner">
+                    <div class="item-input-wrap">
+                      <input type="text" required id="txt-usuario" placeholder="Ingresa tu Usuario">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-media"><i class="icon f7-icons">lock</i></div>
+                  <div class="item-inner">
+                    <div class="item-input-wrap">
+                      <input type="password"  required  id="txt-clave" placeholder="Ingresa tu clave">
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="block text-align-center">
+                <div style="display:none;" id="preloader_1" class="preloader color-isis">
+                  <span class="preloader-inner">
+                    <span class="preloader-inner-gap"></span>
+                    <span class="preloader-inner-left">
+                        <span class="preloader-inner-half-circle"></span>
+                    </span>
+                    <span class="preloader-inner-right">
+                        <span class="preloader-inner-half-circle"></span>
+                    </span>
+                  </span>
+                </div>
+                <button type="submit" id="btn-ingresar" class="button button-large button-fill">INGRESAR</button>
+            </div>
+      </form>
+  </div>
+</div>

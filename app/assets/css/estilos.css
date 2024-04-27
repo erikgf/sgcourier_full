@@ -1,0 +1,73 @@
+:root {
+  --f7-navbar-bg-color: #0027ff;
+}
+
+div.left > a.panel-toggle{
+	color:white !important;
+}
+
+.menu-footer-nombre-app{
+	position: absolute;
+   	bottom: 0px;
+   	margin-bottom: 16px;
+}
+
+.menu-nombre-app{
+	margin-bottom: 0px;
+}
+
+.menu-nombre-app+small{
+	font-size: .65em;
+}
+
+.lbl-menu{
+	padding-left: calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left));
+}
+
+.bg-color-sg{
+	background-color: var(--f7-navbar-bg-color) !important;
+	color : white;
+}
+
+.navbar a, .navbar .title {
+  color: var(--f7-color-white) !important;
+}
+
+@media only screen and (min-width: 1024px) {
+  .app-width{
+    width: 1024px;
+    margin: 0 auto;
+    background: linear-gradient(0deg, #ffffff 30%, #0027ff 70%);
+  }
+}
+
+
+.parpadea {
+	animation-name: parpadeo;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+  
+	-webkit-animation-name:parpadeo;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+  }
+  
+  @-moz-keyframes parpadeo{  
+	0% { opacity: 1.0; }
+	50% { opacity: 0.0; }
+	100% { opacity: 1.0; }
+  }
+  
+  @-webkit-keyframes parpadeo {  
+	0% { opacity: 1.0; }
+	50% { opacity: 0.0; }
+	 100% { opacity: 1.0; }
+  }
+  
+  @keyframes parpadeo {  
+	0% { opacity: 1.0; }
+	50% { opacity: 0.0; }
+	100% { opacity: 1.0; }
+  }

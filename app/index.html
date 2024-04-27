@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#0027ff">
+    <!-- Your app title -->
+    <title></title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" href="assets/f7/framework7.bundle.min.css">
+    <link rel="stylesheet" href="assets/f7/framework7-icons.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="assets/css/estilos.css">
+
+  </head>
+  <body class="color-theme-red app-width">
+    <!-- App root element -->
+    <div id="app">
+      <!-- Panels -->
+      <div class="panel panel-left panel-reveal panel-resizable panel-init" data-swipe="false">
+        <img src="assets/img/menu-left.png" style="width:100%">
+        <div class="lbl-menu">MENÚ</div>
+        <div class="list" style="margin-top:0px">
+            <ul>
+              <li>
+                <a href="/mis_asignaciones/" class="panel-toggle item-link item-content">
+                  <div class="item-media"><i class="f7-icons">car_fill</i></div>
+                   <div class="item-inner">
+                    <div class="item-title">Mis Pendientes</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="/mis_completados/" class="panel-toggle item-link item-content">
+                  <div class="item-media"><i class="f7-icons">checkmark</i></div>
+                   <div class="item-inner">
+                    <div class="item-title">Mis Entregados</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#" onclick="cerrarSesion()" class="panel-toggle item-link item-content bg-color-red text-color-white">
+                  <div class="item-media"><i class="f7-icons">arrow_left_circle</i></div>
+                   <div class="item-inner">
+                    <div class="item-title">Cerrar Sesión</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+        </div>
+        <div class="block block-title-medium menu-footer-nombre-app">
+          <h3 class="menu-nombre-app"></h3>
+          <small>Copyright  &copy; 2020</small>
+        </div>
+      </div>
+
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+         
+      </div>
+    </div> 
+   
+    <!-- Path to Framework7 Library Bundle JS-->
+    <script src="cordova.js"></script>
+    <script type="text/javascript" src="assets/f7/framework7.bundle.min.js"></script>
+    <script type="text/javascript" src="assets/lib/vars.js"></script>
+    <script type="text/javascript" src="assets/lib/compressor.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="assets/lib/util.js"></script>
+    <script type="text/javascript" src="servicios/MainServicio.js"></script>
+    <script type="text/javascript" src="servicios/WebServicio.js"></script>
+
+    <script type="text/javascript" src="vistas/login/index.js"></script>
+    <script type="text/javascript" src="vistas/mis_asignaciones/index.js"></script>
+    <script type="text/javascript" src="vistas/mis_completados/index.js"></script>
+    <script type="text/javascript" src="vistas/registrar_visita/index.js"></script>
+    <!--
+    <script type="text/javascript" src="vistas/oficinas/index.js"></script>
+    <script type="text/javascript" src="vistas/tracking/index.js"></script>
+    -->
+    <script type="text/javascript" src="vistas/routes.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+{{#registros}}
+    <tr>
+      <td>
+        <input disabled class="val_producto" {{#if_ bloqueado '==' '1'}}disabled{{/if_}} style="width:100%" autocomplete required name="txtproductoingreso_{{@index}}" value="{{producto}}"/>
+      </td>
+      <td>
+        <textarea disabled class="val_productodescripcion" {{#if_ bloqueado '==' '1'}}disabled{{/if_}} style="width:100%" autocomplete name="txtproductodescripcioningreso_{{@index}}" value="{{producto_descripcion}}"></textarea>
+      </td>
+      <td class="td-numeroguia">
+        <input disabled class="val_numeroguia" {{#if_ bloqueado '==' '1'}}disabled{{/if_}}  name="txtnumeroguiaingreso_{{@index}}" style="width:100%" value="{{documento_guia}}"/>
+      </td>
+      <td class="td-cantidad">
+        <input disabled class="val_cantidad" {{#if_ bloqueado '==' '1'}}disabled{{/if_}} required name="txtcantidadingreso_{{@index}}" style="width:100%" type="number" value="{{cantidad}}"/>
+      </td>
+      <td class="td-tipopaquete">
+        <select disabled class="val_tipopaquete" {{#if_ bloqueado '==' '1'}}disabled{{/if_}} required style="width:100%;height:24px;">
+      		<option value="1" {{#if_ tipo_paquete '==' '1'}}selected{{/if_}}>PAQUETE</option>
+      		<option value="2" {{#if_ tipo_paquete '==' '2'}}selected{{/if_}}>SOBRE</option>
+      		<option value="3" {{#if_ tipo_paquete '==' '3'}}selected{{/if_}}>CAJA</option>
+      		<option value="4" {{#if_ tipo_paquete '==' '4'}}selected{{/if_}}>MUEBLE</option>
+      		<option value="5" {{#if_ tipo_paquete '==' '5'}}selected{{/if_}}>MUDANZA</option>
+      		<option value="6" {{#if_ tipo_paquete '==' '6'}}selected{{/if_}}>PAQUETON</option>
+      		<option value="7" {{#if_ tipo_paquete '==' '7'}}selected{{/if_}}>SACO</option>
+      		<option value="8" {{#if_ tipo_paquete '==' '8'}}selected{{/if_}}>CARGA</option>
+      		<option value="9" {{#if_ tipo_paquete '==' '9'}}selected{{/if_}}>OTRO</option>
+        </select>
+      </td>
+      <td class="td-peso">
+        <input disabled class="val_peso" {{#if_ bloqueado '==' '1'}}disabled{{/if_}}  name="txtpesoingreso_{{@index}}" style="width:100%" step="0.0001"  type="number" value="{{peso}}"/>
+      </td>
+      <td class="td-volumen">
+        <input disabled class="val_volumen" {{#if_ bloqueado '==' '1'}}disabled{{/if_}}  name="txtvolumeningreso_{{@index}}" style="width:100%" step="0.0001" type="number" value="{{volumen}}"/>
+      </td>
+    </tr>
+{{/registros}}

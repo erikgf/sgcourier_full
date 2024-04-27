@@ -1,0 +1,7 @@
+
+RewriteEngine on
+
+DirectoryIndex index.php index.html
+RewriteCond %{HTTP_HOST} ^consultas\.sgcouriercargo\.com\.pe$
+RewriteRule ^/?$ "https\:\/\/sgcouriercargo\.com\.pe\/consultas\/index\.php" [R=301,L]
+

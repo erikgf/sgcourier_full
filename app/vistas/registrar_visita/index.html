@@ -1,0 +1,213 @@
+<div class="page" data-name="mis_asignaciones">
+      <div class="navbar">
+        <div class="navbar-bg"></div>
+        <div class="navbar-inner">
+          <div class="left">
+              <a href="#" class="link back">
+                <i class="icon icon-back"></i>
+              </a>
+          </div>
+          <div class="title">Registrar Visita</div>
+          <div class="right">
+            <button id="btn-guardar" class="button button-fill" style="margin-right:12px;">GUARDAR</button>
+          </div>
+        </div>
+      </div>  
+  <!-- Scrollable page content -->
+
+  <style type="text/css">
+    ._opacitylow{
+      opacity: .5;
+    }
+
+    .img-cargada{
+      width: 100%;
+      padding: .5em 0px;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .tipo-envio{
+      line-height: 1.5;
+    }
+  </style>
+  <div class="page-content infinite-scroll-content">        
+      <div class="block">
+        <div class="block-title">INFORMACIÓN DESTINATARIO</div>
+        <div class="list media-list">
+            <ul>
+             <li class="item-content" id="blk-cabecera">
+                   
+              </li>
+            </ul>
+        </div>
+
+        <div class="block-title">Información Motivación Visita</div>
+          <div class="row">
+              <div class="col-33 text-align-center">
+                <button id="btn-aceptado" data-key="E" class="tipo-envio  button-large bg-color-green button button-fill"><i class="f7-icons">checkmark_alt_circle</i></button>
+              </div>
+              <div class="col-33 text-align-center">
+                <button id="btn-rechazado" data-key="M" class="_opacitylow tipo-envio button-large button button-fill"><i class="f7-icons">xmark_circle</i></button>
+              </div>
+              <div class="col-33 text-align-center">
+                <button id="btn-siguientevisita" data-key="G" class="_opacitylow tipo-envio button-large button bg-color-black button-fill"><i class="f7-icons">arrowshape_turn_up_left</i></button>
+              </div>
+          </div>
+          <div class="list" id="blk-motivaciones" style="display:none">
+              <ul>
+                <li class="item-content" style="min-height:32px; height:32px">
+                  <div>
+                    <div class="item-title item-label">Seleccionar Motivo</div>
+                  </div>
+                </li>
+                <li>
+                  <label class="item-radio item-radio-icon-start item-content">
+                    <input type="radio"class="txt-tipopago"  name="txt-tipopago" value="1" />
+                    <i class="icon icon-radio"></i>
+                    <div class="item-inner">
+                      <div class="item-title">AUSENTE</div>
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label class="item-radio item-radio-icon-start item-content">
+                    <input type="radio" class="txt-tipopago" name="txt-tipopago" value="2"/>
+                    <i class="icon icon-radio"></i>
+                    <div class="item-inner">
+                      <div class="item-title">RETENCIÓN</div>
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label class="item-radio item-radio-icon-start item-content">
+                    <input type="radio" class="txt-tipopago" name="txt-tipopago" value="3"/>
+                    <i class="icon icon-radio"></i>
+                    <div class="item-inner">
+                      <div class="item-title">DIRECCION INCOMPLETA</div>
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label class="item-radio item-radio-icon-start item-content">
+                    <input type="radio" class="txt-tipopago" name="txt-tipopago" value="4"/>
+                    <i class="icon icon-radio"></i>
+                    <div class="item-inner">
+                      <div class="item-title">RECHAZADO</div>
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label class="item-radio item-radio-icon-start item-content">
+                    <input type="radio" class="txt-tipopago" name="txt-tipopago" value="5"/>
+                    <i class="icon icon-radio"></i>
+                    <div class="item-inner">
+                      <div class="item-title">SE MUDO</div>
+                    </div>
+                  </label>
+                </li>
+               <li>
+                  <label class="item-radio item-radio-icon-start item-content">
+                    <input type="radio" class="txt-tipopago" name="txt-tipopago" value="6"/>
+                    <i class="icon icon-radio"></i>
+                    <div class="item-inner">
+                      <div class="item-title">DESCONOCIDO</div>
+                    </div>
+                  </label>
+                </li>
+              </ul>
+          </div>
+
+       <div class="block-title">Información Detalle Visita</div>
+       <div class="list">
+          <ul>            
+            <li id="blk-recepciondestinatario">
+              <label class="item-checkbox item-checkbox-icon-start item-content">
+                <input type="checkbox" id="txt-esreceptordestinatario" name="txt-esreceptordestinatario" value="1" checked/>
+                <i class="icon icon-checkbox"></i>
+                <div class="item-inner">
+                  <div class="item-title">RECEPCIONA DESTINATARIO</div>
+                </div>
+              </label>
+            </li>
+            <div id="blk-recepcion" style="display:none">
+              <li>
+                 <div id="ipt-documentoreceptor" class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Documento Receptor</div>
+                      <div class="item-input-wrap">
+                        <input type="number" id="txt-documentoreceptor" maxlength="15">
+                      </div>
+                    </div>
+                  </div>
+              </li>
+              <li>
+                 <div id="ipt-receptor" class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Receptor</div>
+                      <div class="item-input-wrap ">
+                        <textarea id="txt-receptor"></textarea>
+                      </div>
+                    </div>
+                  </div>
+              </li>
+            </div>
+            <li>
+                <div class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-input-wrap ">
+                      <button id="btn-subirfotos" data-sheet=".my-sheet" class="sheet-open button button-fill bg-color-blue button-large">SUBIR FOTO(S)</button>
+                    </div>
+                  </div>
+                </div>
+            </li>
+            <div id="blk-inputfiles"></div>
+            <li id="blk-fotos"></li>
+            <li>
+                <div class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Observaciones</div>
+                    <div class="item-input-wrap ">
+                      <textarea id="txt-observaciones"></textarea>
+                    </div>
+                  </div>
+                </div>
+            </li>
+          </ul>
+       </div>
+
+       <div class="block text-align-center">
+            <div id="preloader_2"  style="display:none;"  class="preloader color-isis">
+              <span class="preloader-inner">
+                <span class="preloader-inner-gap"></span>
+                <span class="preloader-inner-left">
+                    <span class="preloader-inner-half-circle"></span>
+                </span>
+                <span class="preloader-inner-right">
+                    <span class="preloader-inner-half-circle"></span>
+                </span>
+              </span>
+            </div>
+        </div>
+      </div>
+
+  </div>
+      
+  <div class="sheet-modal my-sheet">
+    <div class="toolbar">
+      <div class="toolbar-inner">
+        <div class="left"></div>
+        <div class="right"><a class="link sheet-close" href="#">CERRAR</a></div>
+      </div>
+    </div>
+    <div class="sheet-modal-inner">
+      <div class="block">
+        <button  id="btn-subirfotoscamara" class="col button button-fill button-block button-large color-blue"><i class="f7-icons f7-icon-camera">camera</i> USAR CÁMARA</button>
+        <p></p>
+        <button  id="btn-subirfotosgaleria" class="col button button-fill button-block button-large color-green"><i class="f7-icons f7-icon-photo">photo</i> USAR GALERÍA</button>
+      </div>
+    </div>
+  </div>
+</div>

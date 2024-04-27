@@ -1,0 +1,67 @@
+.td-opc{
+        max-width: 50px;
+	width: 50px;
+      }
+      
+      .td-estado{
+        width: 75px;
+        max-width: 75px;
+      }
+
+      .td-numeroguia{
+        width: 80px;
+        max-width: 80px;
+      }
+      
+      .td-cantidad{
+        width: 50px;
+        max-width: 50px;
+      }
+      .td-peso{
+        width: 60px;
+        max-width: 60px;
+      }
+      .td-volumen{
+        width: 60px;
+        max-width: 60px;
+      }
+
+      .td-tipopaquete{
+        width: 100px;
+        max-width: 100px;
+      }
+      .td-direccion{
+        width: 150px;
+        max-width: 150px;
+      }
+
+      .td-ciudad{
+        width: 150px;
+        max-width: 150px;
+      }
+     
+      .td-costounitario{
+        width: 75px;
+        max-width: 75px;
+      }
+      
+      .td-costosubtotal{
+        width: 75px;
+        max-width: 75px;
+      }
+
+      .table-mini tbody tr td{  
+        padding: 2.5px;
+      }
+
+      #tbldetalle input:focus, #tbldetalle select:focus {
+        border-width: 2.5px;
+        outline: none;
+        border-color: #112b52;
+      }
+
+      .val_selected{
+        height: 25px;
+        vertical-align: middle;
+        width: 25px;
+      }

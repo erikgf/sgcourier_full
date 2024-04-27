@@ -1,0 +1,11 @@
+{{#.}}
+     <tr data-id="{{id}}" data-costo_entrega="{{costo_entrega}}" data-descripcion="{{descripcion}}" {{#if_ seleccionado '==' '1'}}class="tr-seleccionado"{{/if_}}>
+        <td style="max-width:75px" class="vertical-align-middle space-nowrap text-center"scope="row">{{id}}</td>
+        <td class="vertical-align-middle space-nowrap">{{descripcion}}</td>
+    </tr>
+{{else}}
+    <tr class="tr-void">
+        <td colspan="10" class="text-center"><i>No hay registros que mostrar</i></td>
+    </tr>
+{{/.}}
+s

@@ -1,0 +1,238 @@
+{
+    "registros" : [
+        {
+            "id" : "0",
+            "id_usuario_asignado" : "1",
+            "estado":"GESTIONANDO",
+            "color":"info",
+            "fecha_hora_atencion":"10-10-2020 08:00am",
+            "observaciones":"",
+            "numero_orden":"6299129",
+            "numero_documento":"19442465",
+            "nombres_apellidos":"SORIA TENAZOA ROSA AURORA",
+            "direccion_uno":"ENRIQUE FEBRES  358",
+            "direccion_dos":"",
+            "urbanizacion":"CHIMU",
+            "ciudad":"CHICLAYO",
+            "region":"LAMBAYEQUE",
+            "celular":"44401197",
+            "total_unidades":"3",
+            "cajas":"1",
+            "visitas" : [
+                {
+                    "item" : "1",
+                    "fecha": "12-02-2020",
+                    "hora": "10:00 am",
+                    "observaciones": "Observaciones de visita",
+                    "img": "image_prueba.jpg"
+                }
+            ]
+        },
+        {
+            "id" : "1",
+            "id_usuario_asignado" : "2",
+            "estado":"RECHAZADO",
+            "color":"danger",
+            "fecha_hora_atencion":"10-10-2020 09:30am",
+            "observaciones":"Se realizó 3 visitas, no se encontró a nadie.",
+            "numero_orden":"6299133",
+            "numero_documento":"19418465",
+            "nombres_apellidos":"JUAN PEREZ 1",
+            "direccion_uno":"ENRIQUE FEBRES  358",
+            "direccion_dos":"",
+            "urbanizacion":"CHIMU",
+            "ciudad":"CHICLAYO",
+            "region":"LAMBAYEQUE",
+            "celular":"44401197",
+            "total_unidades":"3",
+            "cajas":"1",
+            "visitas" : [
+                {
+                    "item" : "1",
+                    "fecha": "12-02-2020",
+                    "hora": "10:00 am",
+                    "observaciones": "Observaciones de visita",
+                    "img": "image_prueba.jpg"
+                }
+            ]
+        },
+        {
+            "id" : "2",
+            "id_usuario_asignado" : "3",
+            "estado":"RECHAZADO",
+            "color":"danger",
+            "fecha_hora_atencion":"10-10-2020 11:00am",
+            "observaciones":"Se negó a recibirlo.",
+            "numero_orden":"6299132",
+            "numero_documento":"1943365",
+            "nombres_apellidos":"JUAN PEREZ 2",
+            "direccion_uno":"ENRIQUE FEBRES  358",
+            "direccion_dos":"",
+            "urbanizacion":"CHIMU",
+            "ciudad":"CHICLAYO",
+            "region":"LAMBAYEQUE",
+            "celular":"44401197",
+            "total_unidades":"3",
+            "cajas":"1",
+            "visitas" : [
+                {
+                    "item" : "1",
+                    "fecha": "12-02-2020",
+                    "hora": "10:00 am",
+                    "observaciones": "Observaciones de visita",
+                    "img": "image_prueba.jpg"
+                }
+            ]
+        },
+        {
+            "id" : "3",
+            "id_usuario_asignado" : "3",            
+            "estado":"ENTREGADO",
+            "color":"success",
+            "fecha_hora_atencion":"10-10-2020 10:00am",
+            "observaciones":"Entregado correctamente.",
+            "numero_orden":"6299339",
+            "numero_documento":"19418465",
+            "nombres_apellidos":"SORIA TENAZOA ROSA AURORA",
+            "direccion_uno":"ENRIQUE FEBRES  358",
+            "direccion_dos":"",
+            "urbanizacion":"CHIMU",
+            "ciudad":"TRUJILLO",
+            "region":"LA LIBERTAD-TRUJILLO",
+            "celular":"44401197",
+            "total_unidades":"3",
+            "cajas":"1",
+            "visitas" : [
+                {
+                    "item" : "1",
+                    "fecha": "12-02-2020",
+                    "hora": "10:00 am",
+                    "observaciones": "Observaciones de visita",
+                    "img": "image_prueba.jpg"
+                },
+                {
+                    "item" : "2",
+                    "fecha": "12-02-2020",
+                    "hora": "10:00 am",
+                    "observaciones": "Observaciones de visita",
+                    "img": "image_prueba.jpg"
+                }
+            ]
+        },
+        {
+            "id" : "4",
+            "id_usuario_asignado" : "4",
+            "estado":"GESTIONANDO",
+            "fecha_hora_atencion":"10-10-2020 02:00pm",
+            "color":"info",
+            "observaciones":"",
+            "numero_orden":"6299129",
+            "numero_documento":"19418465",
+            "nombres_apellidos":"SORIA TENAZOA ROSA AURORA",
+            "direccion_uno":"ENRIQUE FEBRES  358",
+            "direccion_dos":"",
+            "urbanizacion":"CHIMU",
+            "ciudad":"TRUJILLO",
+            "region":"LA LIBERTAD-TRUJILLO",
+            "celular":"44401197",
+            "total_unidades":"3",
+            "cajas":"1",
+            "visitas" : []
+        },
+        {
+            "id" : "5",
+            "id_usuario_asignado" : "3",            
+            "estado":"ENTREGADO",
+            "fecha_hora_atencion":"10-10-2020 01:00pm",
+            "color":"success",
+            "observaciones":"Entregado correctamente.",
+            "numero_orden":"6299339",
+            "numero_documento":"19418465",
+            "nombres_apellidos":"SORIA TENAZOA ROSA AURORA",
+            "direccion_uno":"ENRIQUE FEBRES  358",
+            "direccion_dos":"",
+            "urbanizacion":"CHIMU",
+            "ciudad":"TRUJILLO",
+            "region":"LA LIBERTAD-TRUJILLO",
+            "celular":"44401197",
+            "total_unidades":"3",
+            "cajas":"1",
+            "visitas" : [
+                {
+                    "item" : "1",
+                    "fecha": "12-02-2020",
+                    "hora": "10:00 am",
+                    "observaciones": "Observaciones de visita",
+                    "img": "image_prueba.jpg"
+                }
+            ]
+        },
+        {
+            "id" : "6",
+            "id_usuario_asignado" : "4",
+            "estado":"GESTIONANDO",
+            "color":"info",
+            "fecha_hora_atencion":"10-10-2020 04:30pm",
+            "observaciones":"",
+            "numero_orden":"12494931",
+            "numero_documento":"19418465",
+            "nombres_apellidos":"LORENZO PÉREZ PÉREZ",
+            "direccion_uno":"ENRIQUE FEBRES  358",
+            "direccion_dos":"",
+            "urbanizacion":"CHIMU",
+            "ciudad":"TRUJILLO",
+            "region":"LA LIBERTAD-TRUJILLO",
+            "celular":"44401197",
+            "total_unidades":"3",
+            "cajas":"1",
+            "visitas" : [
+                {
+                    "item" : "1",
+                    "fecha": "12-02-2020",
+                    "hora": "10:00 am",
+                    "observaciones": "Observaciones de visita",
+                    "img": "image_prueba.jpg"
+                }
+            ]
+        },
+        {   
+            "id" : "7",
+            "id_usuario_asignado" : "3",
+            "estado":"RECHAZADO",
+            "color":"danger",
+            "fecha_hora_atencion":"10-10-2020 04:00pm",
+            "observaciones":"Se negó a recibirlo.",
+            "numero_orden":"1049493",
+            "numero_documento":"1943365",
+            "nombres_apellidos":"JOEL JOEL PÉREZ",
+            "direccion_uno":"ENRIQUE FEBRES  358",
+            "direccion_dos":"",
+            "urbanizacion":"CHIMU",
+            "ciudad":"CHICLAYO",
+            "region":"LAMBAYEQUE",
+            "celular":"44401197",
+            "total_unidades":"3",
+            "cajas":"1",
+            "visitas" : [
+                {
+                    "item" : "1",
+                    "fecha": "12-02-2020",
+                    "hora": "10:00 am",
+                    "observaciones": "Observaciones de visita",
+                    "img": "image_prueba.jpg"
+                }
+            ]
+        }
+    ],
+    "usuarios_asignar":[
+      {"id":"1", "nombres_apellidos":"JUAN PÉREZ PÉREZ"},
+      {"id":"2", "nombres_apellidos":"LORENZO ACOSTA"},
+      {"id":"3", "nombres_apellidos":"SALVADOR ALLENDE"},
+      {"id":"4", "nombres_apellidos":"JUAN JONÁS"}
+    ],
+    "cantidades": {
+        "gestionando": "11",
+        "entregados": "33",
+        "motivados": "4"
+    }
+}

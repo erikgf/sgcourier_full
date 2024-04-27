@@ -1,0 +1,40 @@
+{
+    "registros" : [
+        {
+            "id" : "000001",
+            "fecha_ingreso":"10-10-2020",
+            "numero_documento":"10480188862",
+            "razon_social":"NOMBRE EMPRESA 1",
+            "celular":"954424874",
+            "cantidad" : "75",
+            "cantidad_noasignado" : "0",
+            "cantidad_gestionando" : "30",
+            "cantidad_entregado" : "25",
+            "cantidad_motivado" : "20"
+        },
+        {
+            "id" : "000002",
+            "fecha_ingreso":"10-11-2020",
+            "numero_documento":"10480448862",
+            "razon_social":"NOMBRE EMPRESA 2",
+            "celular":"954424874",
+            "cantidad" : "50",
+            "cantidad_noasignado" : "0",
+            "cantidad_gestionando" : "38",
+            "cantidad_entregado" : "12",
+            "cantidad_motivado" : "0"
+        },
+        {
+            "id" : "000003",
+            "fecha_ingreso":"10-12-2020",
+            "numero_documento":"104120188862",
+            "razon_social":"NOMBRE EMPRESA 3",
+            "celular":"95442234",
+            "cantidad" : "65",
+            "cantidad_noasignado" : "0",
+            "cantidad_gestionando" : "5",
+            "cantidad_entregado" : "5",
+            "cantidad_motivado" : "55"
+        }
+    ]
+}

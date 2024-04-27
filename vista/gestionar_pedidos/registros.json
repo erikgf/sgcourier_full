@@ -1,0 +1,28 @@
+{
+    "registros" : [
+        {
+            "id" : "000001",
+            "fecha_ingreso":"10-10-2020",
+            "cantidad" : "75",
+            "cantidad_gestionando" : "30",
+            "cantidad_entregado" : "25",
+            "cantidad_motivado" : "20"
+        },
+        {
+            "id" : "000002",
+            "fecha_ingreso":"10-11-2020",
+            "cantidad" : "50",
+            "cantidad_gestionando" : "38",
+            "cantidad_entregado" : "12",
+            "cantidad_motivado" : "0"
+        },
+        {
+            "id" : "000003",
+            "fecha_ingreso":"10-12-2020",
+            "cantidad" : "65",
+            "cantidad_gestionando" : "5",
+            "cantidad_entregado" : "5",
+            "cantidad_motivado" : "55"
+        }
+    ]
+}

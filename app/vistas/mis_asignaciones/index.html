@@ -1,0 +1,77 @@
+<div class="page" data-name="mis_asignaciones">
+      <div class="navbar">
+        <div class="navbar-bg"></div>
+        <div class="navbar-inner">
+          <div class="left">
+              <a href="#" class="button button-small panel-toggle display-flex" data-panel="left">
+                <i class="f7-icons">bars</i>
+              </a>
+          </div>
+          <div class="title">Mis Pendientes</div>
+        </div>
+      </div>  
+
+  <style type="text/css">
+      .item-subtitle-main{
+        font-size: .875em  !important;
+      }
+
+      .item-title-row > .item-title, .item-subtitle{
+        font-weight: bold !important;
+      }
+
+      .item-subtext{
+        font-size: .8em !important;
+        color: black;
+      }
+
+      .item-subtitle{
+        font-size: 1.1em !important;
+      }
+
+      .icon-refrescar{
+        font-size: 1em !important;
+      }
+
+  </style>
+
+  <!-- Scrollable page content -->
+  <div class="page-content infinite-scroll-content">        
+      <div class="block">
+        <div class="list">
+            <ul>
+             <li class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Cliente</div>
+                  <div class="item-input-wrap input-dropdown-wrap">
+                    <select id="txt-cliente"></select>
+                  </div>
+                </div>
+              </li>
+              <li class="row">
+                <div class="col-65">
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label item-floating-label">Código Remito</div>
+                      <div class="item-input-wrap">
+                        <input type="text" id="txt-codigoremito" maxlength="12" placeholder="Ej.: SG-4083571">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-35">
+                  <br>
+                  <a id="btn-buscar" class="button bg-color-blue button-fill fill-form-from-data" href="#"><i class="f7-icons">barcode</i></a>
+                </div>
+              </li>
+            </ul>
+        </div>
+        <div class="block-title">ÚLTIMOS REGISTROS  <a style="float:right" href="#" id="btn-refrescar"><i class="f7-icons icon-refrescar">arrow_2_circlepath</i> REFRESCAR</a></div>
+        <div class="list media-list">
+          <ul id="lst-asignaciones"> 
+          </ul>
+          <div class="preloader infinite-scroll-preloader"></div>
+        </div>
+      </div>
+  </div>
+</div>
