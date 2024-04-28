@@ -1,0 +1,41 @@
+<div class="modal-dialog modal-md" role="document">
+    <form class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Viendo Fotos</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true ">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-12">
+                    <div id="carruselFotos" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            {{#.}}
+                                <li data-target="#carruselFotos" data-slide-to="{{@index}}" {{active}}></li>
+                            {{/.}}
+                        </ol>
+                        <div class="carousel-inner">
+                            {{#.}}
+                                <div class="carousel-item {{active}}">
+                                    <img class="d-block w-100" src="../../img/imagenes_visitas_nuevo/{{url}}" alt="Foto {{@index}}">
+                                </div>
+                            {{/.}}
+                        </div>
+                        <a class="carousel-control-prev" href="#carruselFotos" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previo</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carruselFotos" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Siguiente</span>
+                        </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+        </div>
+    </form>
+</div>

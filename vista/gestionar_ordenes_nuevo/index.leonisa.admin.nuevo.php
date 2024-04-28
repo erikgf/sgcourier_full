@@ -115,7 +115,7 @@
     <script type="text/javascript" src="componentes/CabeceraPedido/CabeceraPedido.js"></script>
     <script type="text/javascript" src="componentes/TabDespacharRuta/TabDespacharRuta.js"></script>
     <script type="text/javascript" src="componentes/TabAsignarRepartidores/TabAsignarRepartidores.js"></script>
-    <script type="text/javascript" src="componentes/TabMonitoreoRepartidores/TabMonitoreoRepartidores.js"></script>
+    <script type="text/javascript" src="componentes/TabMonitoreoRepartidores/TabMonitoreoRepartidores.1.js"></script>
 
     <script type="text/javascript" src="componentes/TabsProcesos/TabsProcesos.js"></script>
     <script type="text/javascript" src="index.leonisa.admin.nuevo.js"></script>

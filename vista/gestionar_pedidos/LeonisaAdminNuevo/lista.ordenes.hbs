@@ -1,0 +1,26 @@
+{{#.}}
+<tr data-indice="{{id_pedido_orden}}">
+    <th class="text-center text-white bg-{{estado_color_rotulo}}" scope="row">
+        <button class="btn btn-xs btn-default btn-verdetalle" title="Ver Detalle" data-id={{id_pedido_orden}}>
+            <i class="fa fa-eye"></i>
+        </button>
+        <span class="badge badge-pill badge-dark" title="Número de Visitas">{{numero_visitas}}</span> 
+        {{codigo_guia}}
+    </th>
+    <td>{{fecha_registro}}</td>
+    <td>{{repartidor_asignado}}</td>
+    <td>{{numero_documento_destinatario}} - {{destinatario}}</td>
+    <td>{{distrito}}</td>
+    <td>{{provincia}}</td>
+    <td>{{departamento}}</td>
+</tr>
+{{/.}}
+{{^.}}
+<tr>
+    <td colspan="100">
+        <div class="font-20 text-center">
+            No hay registros que mostrar <i class="fa fa-file-code"></i>
+        </div>
+    </td>
+</tr>
+{{/.}}

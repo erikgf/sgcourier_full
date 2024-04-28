@@ -1,0 +1,136 @@
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Viendo Pedido / Órden Código: {{codigo_guia}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true ">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="form-group m-t-10">
+                        <label>Repartidor</label>
+                        <p>{{repartidor_asignado}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group m-t-10">
+                        <label>Fecha Hora Asignado</label>
+                        <p>{{fecha_hora_asignado}}</p>
+                    </div>
+                </div>
+            </div>
+            <div ckass="p-1" style="border-top:1px solid; color: lightgray"></div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group m-t-10">
+                        <label for="txtnumerodocumento">Núm. Documento</label>
+                        <p id="txtnumerodocumento">{{numero_documento_destinatario}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="form-group m-t-10">
+                        <label for="txtdestinatario">Destinatario</label>
+                        <p id="txtdestinatario">{{destinatario}}</p>
+                    </div>
+                </div>
+                    <div class="col-sm-2">
+                    <div class="form-group m-t-10">
+                        <label for="txtestado">Estado</label>
+                        <span id="txtestado" class="badge badge-{{estado_color_rotulo}}">{{estado}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group m-t-10">
+                        <label>Dirección</label>
+                        <p>{{direccion}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group m-t-10">
+                        <label>Barrio / Urbanización</label>
+                        <p>{{referencia}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group m-t-10">
+                        <label>Ciudad / Distrito</label>
+                        <p>{{distrito}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group m-t-10">
+                        <label>Provincia</label>
+                        <p>{{provincia}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group m-t-10">
+                        <label>Departamento</label>
+                        <p>{{departamento}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group m-t-10">
+                        <label for="txttelefono">Celular / Teléfono</label>
+                        <p id="txttelefono">{{celular}} / {{telefono}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>Visitas</h4>
+                    <div class="table-responsive">
+                        <small>
+                            <table lass="table table-condensed">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col" style="width:75px" class="text-center">N°</th>
+                                        <th scope="col" style="width:125px" class="text-center">Fecha atención</th>
+                                        <th scope="col" style="width:200px">Receptor</th>
+                                        <th scope="col">Motivaciones</th>
+                                        <th scope="col">Observaciones</th>
+                                        <th scope="col" style="width:75px" class="text-center">Fotos</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbdvisitas">
+                                    {{#visitas}}
+                                        <tr>
+                                            <th scope="row" class="text-center">{{numero_visita}}</th>
+                                            <td class="text-center">{{fecha}}<br>{{hora}}</td>
+                                            <td>{{numero_documento_receptor}} - {{nombres_receptor}}</td>
+                                            <td>{{motivaciones}}</td>
+                                            <td>{{observaciones}}</td>
+                                            <td class="text-center">
+                                                    <button data-urls="{{urls}}" 
+                                                        {{#if_ urls '==' ''}}disabled{{/if_}}
+                                                        type="button" 
+                                                        class="btn btn-sm btn-primary btn-verfotos" 
+                                                        title="Ver Fotos">
+                                                        <i class="fa fa-image"></i>
+                                                    </button>
+                                            </td>
+                                        </tr>
+                                    {{/visitas}}
+                                    {{^visitas}}
+                                        <tr><td  class='text-center' scope='row' colspan='6'>No hay visitas aún.</td></tr>
+                                    {{/visitas}}
+                                </tbody>
+                            </table>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+        </div>
+    </div>
+</div>

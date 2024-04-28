@@ -1,9 +1,7 @@
 <?php 
-
 include_once "../phspreadsheet/vendor/autoload.php";
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
-
 require_once 'Modelo.clase.php';
 
 class Pedido extends Modelo{
@@ -314,7 +312,8 @@ class Pedido extends Modelo{
                     eo.estado_color_rotulo,
                     eo.estado_color,
                     npo.numero_visitas,
-                    COALESCE(CONCAT(u.nombres,' ',u.apellidos),'') as repartidor_asignado
+                    COALESCE(CONCAT(u.nombres,' ',u.apellidos),'') as repartidor_asignado,
+                    npo.mostrar_excel
                     FROM nuevo_pedido_orden npo
                     INNER JOIN estado_orden eo ON eo.id_estado_orden = npo.estado_actual
                     LEFT JOIN usuario u ON u.id_usuario = npo.id_usuario_asociado
@@ -549,8 +548,6 @@ class Pedido extends Modelo{
                 array_push($params, $ff);
             }
             
-            
-
             $sql = "SELECT
                     npo.zona as zona,
                     npo.codigo_numero_orden, 
@@ -583,7 +580,7 @@ class Pedido extends Modelo{
                     LEFT JOIN nuevo_pedido_orden_visita pov ON pov.id_pedido_orden = npo.id_pedido_orden AND pov.ultima_visita
                     LEFT JOIN nuevo_pedido p ON p.id_pedido = npo.id_pedido
                     LEFT JOIN usuario u ON npo.id_usuario_asociado = u.id_usuario
-                    WHERE npo.estado_mrcb AND $sqlIDPedido AND $sqlEstado
+                    WHERE npo.estado_mrcb AND npo.mostrar_excel AND $sqlIDPedido AND $sqlEstado
                     ORDER BY npo.id_pedido_orden";
             $data = $this->BD->consultarFilas($sql, $params);
 

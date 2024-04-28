@@ -40,6 +40,15 @@ try {
             $data = $objPedido->leerXOrdenCodigoRemitoApp($id_cliente);
             Funciones::imprimeJSON(200, "", $data);
         break;
+        case "buscar_ordenes_leonisa":
+            $id_usuario_responsable = $_sesion["id_usuario"];
+            $tipo =  isset($_POST["p_tipo"]) ? $_POST["p_tipo"] : "";
+            $cadenaBuscar =  isset($_POST["p_cadena_buscar"]) ? $_POST["p_cadena_buscar"] : "";
+
+            $id_cliente = GlobalVariables::$ID_LEONISA;
+            $data = $objPedido->buscarOrdenesInterno($id_cliente, $tipo, $cadenaBuscar);
+            Funciones::imprimeJSON(200, "", $data);
+        break;
         case "leer_x_orden_id":
             if ($_sesion){
                 $id_usuario = $_sesion["id_usuario"];    
@@ -172,6 +181,21 @@ try {
             }
 
             $data = $objPedido->leerXId();
+            Funciones::imprimeJSON(200, "", $data);
+        break;
+
+        case "cambiar_mostrar_excel_x_id":
+            $id_pedido_orden =  isset($_POST["p_id_pedido_orden"]) ? $_POST["p_id_pedido_orden"] : "";
+            $objPedido->id_pedido_orden = $id_pedido_orden;
+
+            if ($id_pedido_orden == ""){
+                throw new Exception("No se ha encontrado ID de órden.", 1);
+            }
+            $mostrar_excel =  isset($_POST["p_mostrar_excel"]) ? $_POST["p_mostrar_excel"] : "";
+            if ($mostrar_excel == ""){
+                throw new Exception("No se ha mandado la opción de mostrar/no mostrar excel.", 1);
+            }
+            $data = $objPedido->cambiarMostrarExcelXId($mostrar_excel);
             Funciones::imprimeJSON(200, "", $data);
         break;
 

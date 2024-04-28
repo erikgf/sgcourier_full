@@ -198,6 +198,17 @@ class PedidoOrden extends Modelo{
                 4. mismo estado
                 5. mismo día
             */ 
+
+            $sql = "SELECT npo.id_pedido_orden
+                        FROM nuevo_pedido_orden npo
+                        WHERE npo.id_pedido_orden = :0 AND npo.estado_mrcb 
+                            AND npo.estado_actual IN ('E','M')";
+            
+            $pedidoOrdenYaEntregado = $this->BD->consultarFila($sql, [$this->id_pedido_orden]);
+
+            if ($pedidoOrdenYaEntregado){
+                throw new Exception("Se está intentando enviar dos veces un registro ya  enviado. Paciencia por favor.");
+           }
             
             $sql = "SELECT COUNT(id_pedido_orden_visita) 
                     FROM nuevo_pedido_orden_visita 
@@ -328,8 +339,8 @@ class PedidoOrden extends Modelo{
             $ESTADO_ZONA_PREVIO = $pedidoRegistro["estado_actual"];
 
             if ($retrocediendoEnElProceso){
-                $sql = "SELECT id_usuario_registro FROM nuevo_pedido_orden_estados WHERE id_pedido_orden = :0 AND id_estado_orden = :1 AND estado_mrcb";
-                $id_usuario_registro_estado = $this->BD->consultarValor($sql, [$this->id_pedido_orden, $this->ESTADO_ALMACEN_AGENCIA]);
+                //$sql = "SELECT id_usuario_registro FROM nuevo_pedido_orden_estados WHERE id_pedido_orden = :0 AND id_estado_orden = :1 AND estado_mrcb";
+                //$id_usuario_registro_estado = $this->BD->consultarValor($sql, [$this->id_pedido_orden, $this->ESTADO_ALMACEN_AGENCIA]);
 
                 $sql = "UPDATE nuevo_pedido_orden_estados 
                         SET estado_mrcb = 0
@@ -668,10 +679,16 @@ class PedidoOrden extends Modelo{
             $resultadosProceso = [];
             $ordenesAsociadasEstado = [];
             $cantidadTotalActualizadas = 0;
-            $estado = $this->BD->consultarFila("SELECT descripcion, id_estado_orden, estado_color_rotulo as estado_color FROM estado_orden WHERE id_estado_orden = :0", [$estadoNuevo]);
+
+            $sql = "SELECT descripcion, id_estado_orden, estado_color_rotulo as estado_color 
+                    FROM estado_orden WHERE id_estado_orden = :0"; 
+            $estado = $this->BD->consultarFila($sql, [$estadoNuevo]);
 
             foreach ($arregloDepartamentos as $i => $departamento) {
-                $sql = "SELECT id_pedido_orden, estado_actual FROM nuevo_pedido_orden WHERE id_pedido = :0 AND departamento = :1 AND estado_mrcb";
+                $sql = "SELECT id_pedido_orden, estado_actual 
+                            FROM nuevo_pedido_orden 
+                            WHERE id_pedido = :0 AND departamento = :1 
+                                    AND estado_mrcb AND estado_actual IN ('A','P')";
                 $pedidosOrdenes = $this->BD->consultarFilas($sql, [$this->id_pedido, $departamento]);
 
                 $cantidad = count($pedidosOrdenes);
@@ -739,14 +756,19 @@ class PedidoOrden extends Modelo{
             $resultadosProceso = [];
             $ordenesAsociadasEstado = [];
             $cantidadTotalActualizadas = 0;
-            $estado = $this->BD->consultarFila("SELECT descripcion, id_estado_orden, estado_color_rotulo as estado_color FROM estado_orden WHERE id_estado_orden = :0", [$estadoNuevo]);
+            $estado = $this->BD->consultarFila("SELECT descripcion, id_estado_orden, estado_color_rotulo as estado_color 
+                                FROM estado_orden 
+                                WHERE id_estado_orden = :0", [$estadoNuevo]);
 
             foreach ($arregloProvincias as $i => $provinciaDepartamento) {
                 $temp  = explode("_", $provinciaDepartamento);
                 $departamento = $temp[0];
                 $provincia = $temp[1];
 
-                $sql = "SELECT id_pedido_orden, estado_actual FROM nuevo_pedido_orden WHERE id_pedido = :0 AND departamento = :1  AND provincia = :2 AND estado_mrcb";
+                $sql = "SELECT id_pedido_orden, estado_actual 
+                                    FROM nuevo_pedido_orden 
+                                    WHERE id_pedido = :0 AND departamento = :1  AND provincia = :2 AND estado_mrcb
+                                            AND estado_actual IN ('A','P')";
                 $pedidosOrdenes = $this->BD->consultarFilas($sql, [$this->id_pedido, $departamento, $provincia]);
 
                 $cantidad = count($pedidosOrdenes);
@@ -868,4 +890,66 @@ class PedidoOrden extends Modelo{
             throw new Exception($exc->getMessage());
         }
     }
+
+    public function buscarOrdenesInterno($id_cliente, $tipo, $cadenaBuscar){
+        try{
+            $columnaBusqueda = "";
+            if ($tipo == "dni"){
+                $columnaBusqueda = "npo.numero_documento_destinatario";
+            }
+
+            if ($tipo == "codigo_guia"){
+                $columnaBusqueda = "npo.codigo_guia";
+            }
+
+            if ($columnaBusqueda == ""){
+                throw new Exception("No se ha enviado los parámetros de búsqueda correcta.", 422);
+            }
+          
+            $sql = "SELECT 
+                    npo.id_pedido_orden, 
+                    npo.codigo_numero_orden, 
+                    DATE_FORMAT(np.fecha_ingreso,'%d-%m-%Y') as fecha_registro,
+                    npo.codigo_guia, 
+                    npo.numero_documento_destinatario, 
+                    npo.destinatario,
+                    npo.distrito, npo.provincia, npo.departamento, 
+                    npo.estado_actual, 
+                    eo.estado_color_rotulo,
+                    eo.estado_color,
+                    npo.numero_visitas,
+                    COALESCE(CONCAT(u.nombres,' ',u.apellidos),'') as repartidor_asignado
+                    FROM nuevo_pedido_orden npo
+                    INNER JOIN nuevo_pedido np ON np.id_pedido = npo.id_pedido
+                    INNER JOIN estado_orden eo ON eo.id_estado_orden = npo.estado_actual
+                    LEFT JOIN usuario u ON u.id_usuario = npo.id_usuario_asociado
+                    WHERE np.estado_mrcb AND np.id_cliente = :0 
+                            AND npo.estado_mrcb 
+                            AND $columnaBusqueda LIKE '%$cadenaBuscar%'
+                    ORDER BY npo.numero_orden_asignado";
+
+            $registros = $this->BD->consultarFilas($sql, [$id_cliente]);
+
+            return $registros;
+        } catch (Exception $exc) {
+            throw new Exception($exc->getMessage());
+        }
+    }
+
+    public function cambiarMostrarExcelXId($mostrar_excel){
+        try{
+          
+            $this->BD->update(
+                "nuevo_pedido_orden",
+                ["mostrar_excel"=>$mostrar_excel],
+                ["id_pedido_orden"=>$this->id_pedido_orden]
+            );
+
+            return $this->id_pedido_orden;
+        } catch (Exception $exc) {
+            throw new Exception($exc->getMessage());
+        }
+    }
+    
+    
 }

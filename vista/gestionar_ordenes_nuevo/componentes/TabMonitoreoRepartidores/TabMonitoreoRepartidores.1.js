@@ -12,9 +12,14 @@ const TabMonitoreoRepartidores = function (initData){
         const ordenesHTML = `{{#registros}}
                                 <tr data-indice="{{id_pedido_orden}}">
                                     <th class="text-center text-white bg-{{estado_color_rotulo}}" scope="row">
-                                        <button class="btn btn-xs btn-default btn-verdetalle" title="Ver Detalle" data-id={{id_pedido_orden}}>
+                                        <button type="button" class="btn btn-xs btn-default btn-verdetalle" title="Ver Detalle" data-id="{{id_pedido_orden}}">
                                             <i class="fa fa-eye"></i>
                                         </button>
+                                        {{#mostrar_excel}}
+                                        <button type="button" class="btn btn-xs btn-success btn-marcaresconder" title="Marcar como revisado" data-id="{{id_pedido_orden}}">
+                                            <i class="fa fa-check"></i>
+                                        </button>
+                                        {{/mostrar_excel}}
                                         <span class="badge badge-pill badge-dark" title="Número de Visitas">{{numero_visitas}}</span> 
                                         {{codigo_guia}}
                                     </th>
@@ -88,7 +93,7 @@ const TabMonitoreoRepartidores = function (initData){
                                               <table id="tbllistado" class="table table-sm table-condensed">
                                                     <thead >
                                                         <tr>
-                                                            <td scope="col" style="width: 140px;">N. Guía</td>
+                                                            <td scope="col" style="width: 175px;">N. Guía</td>
                                                             <td scope="col">Repartidor</td>
                                                             <td scope="col">Destinatario</td>
                                                             <td scope="col">Ciudad/Distrito</td>
@@ -382,7 +387,6 @@ const TabMonitoreoRepartidores = function (initData){
             objCabeceraPedido.obtenerDatos({id: this.id});
         });
 
-
         this.$$mdlVerdetalle.on("click", ".btn-verfotos", (event) => {
             event.preventDefault();
             const { currentTarget } = event;
@@ -391,6 +395,11 @@ const TabMonitoreoRepartidores = function (initData){
 
         this.$$mdlFotos.on('hidden.bs.modal', function () {
             $('body').addClass('modal-open');
+        });
+
+        this.$.on("click", ".btn-marcaresconder", (event) => {
+            const { currentTarget } = event;
+            this.marcarExcel(currentTarget, 0);
         });
 
     };
@@ -464,6 +473,44 @@ const TabMonitoreoRepartidores = function (initData){
         }
     };
 
+    this.marcarExcel = async($btn, mostrarExcel) => {
+        const { id } = $btn.dataset;
+        const htmlTemporal = $btn.innerHTML;
+
+        try{
+            this.toggleBotonMarcarExcel($btn);
+            await $.when($.post("../../controlador/nuevo.pedidos_ordenes.php?op=cambiar_mostrar_excel_x_id", 
+                    { p_id_pedido_orden : id, p_mostrar_excel: mostrarExcel }
+            ));
+        } catch (e) {
+            console.error(e);
+            Util.alert($(this.$blkAlert),  e.responseJSON?.mensaje || e.responseText  , "danger");
+            if ($btn){
+                this.toggleBotonMarcarExcel($btn, false);
+            }
+        } finally {
+            $btn.innerHTML = htmlTemporal;
+            $btn.disabled = false;
+        }
+    };
+
+
+    this.toggleBotonMarcarExcel = ($btn, esconder = true) => {
+        if (!$btn) return;
+        const { id } = $btn.dataset;
+        $btn.classList[esconder ? "add" : "remove"]("hide");
+        this._data.registrosTotales = this._data.registrosTotales.map( orden => {
+            if (orden.id_pedido_orden == id){
+                return {
+                    ...orden,
+                    mostrar_excel: false
+                }
+            }
+
+            return orden;
+        });
+    };
+
     this.verFotos = ({urlsSinFormateo}) => {
         if (urlsSinFormateo == ""){
             return;
@@ -534,10 +581,14 @@ const TabMonitoreoRepartidores = function (initData){
     };
 
     const renderOrdenes = (ordenesSeleccionadas) => {
-        this._data.ordenes = ordenesSeleccionadas;
-        this._data.resumenOrdenes = obtenerResumenOrdenes(ordenesSeleccionadas);
-
-        this.$tblListadoBody.innerHTML = Handlebars.partials.ordenesMonitoreoPartial({registros: ordenesSeleccionadas});
+        this._data.ordenes = ordenesSeleccionadas.map( orden => {
+            return {
+                ...orden,
+                mostrar_excel: orden.mostrar_excel == 1
+            }
+        });
+        this._data.resumenOrdenes = obtenerResumenOrdenes(this._data.ordenes);
+        this.$tblListadoBody.innerHTML = Handlebars.partials.ordenesMonitoreoPartial({ registros: this._data.ordenes });
         this.$tblListadoFooter.innerHTML = Handlebars.partials.resumenOrdenesMonitoreoPartial(this._data.resumenOrdenes);
     };
 

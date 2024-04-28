@@ -1,0 +1,14 @@
+{{#.}}
+<tr>
+    <th scope="row" class="text-center">
+        <a title="VER" target="blank" href="../gestionar_ordenes_nuevo/index.leonisa.admin.nuevo.php?p_id={{id}}" class="btn btn-xs btn-info"><i class="fa fa-eye"></i></a>	
+        <button title="ELIMINAR" data-id="{{id}}" class="btn btn-xs btn-danger .btn-eliminar"><i class="fa fa-trash"></i></button>	
+    </th>
+    <td class="text-center">{{id_pedido_log}}</td>
+    <td class="text-center"><small>{{fecha_ingreso}}</small></td>
+    <td style="font-size:.925em" class="text-center">{{cantidad}}</td>
+    {{#cantidades}}
+        <td style="font-size:.925em" class="text-center">{{cantidad}}<b class="text-{{colorPorcentaje}}">({{porcentaje}}%)</b></td>
+    {{/cantidades}}
+</tr>
+{{/.}}
